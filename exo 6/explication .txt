@@ -1,0 +1,13 @@
+la gestion rigoureuse des ressources grâce au motif IDisposable : alors que le Garbage Collector de C# gère automatiquement la mémoire vive (RAM),
+il est incapable de libérer seul les ressources "non-managées" comme les connexions aux bases de données ou les fichiers ouverts.
+
+L'implémentation de l'interface IDisposable permet de définir une méthode standardisée, Dispose(), pour fermer ces ressources proprement. L'utilisation du mot-clé using automatise 
+ce processus en garantissant que Dispose() sera appelé quoi qu'il arrive (même en cas de crash ou d'exception), transformant ainsi une gestion manuelle lourde et risquée
+(blocs try/finally) en une sécurité intégrée qui évite les fuites de ressources et les blocages système dans des applications professionnelles.
+
+
+le  using reelement est une syntaxe qui quand on la developpe donnerai un try finally :
+sa permet d essayer les parties du codes dont on est pas sur (dans le catch) et de garantir que les methodes dans le bloc finally  sexecuteront quoi qu il arrive 
+(meme si le code dans le try crash) pour eviter les fuites de ressources et les blocages systeme dans des applications
+try marche avec catch qui capteur les erreurs 
+et le finally qui garantit que les ressources sont libérées même en cas d'erreur : exemple finally ferme programme

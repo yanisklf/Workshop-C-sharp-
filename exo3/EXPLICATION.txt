@@ -1,0 +1,29 @@
+
+
+
+
+
+Le problème vient de la portée de la variable j et d'un concept appelé Closure 
+
+L'erreur : Dans le code initial, la variable j est déclarée en dehors de la boucle for. À chaque itération, la valeur de j est mise à jour.
+
+La capture : Lorsque vous créez un thread avec () => d(j), le thread ne capture pas la valeur de j au moment précis de sa création. 
+Il capture une référence (une adresse) vers la variable j.
+
+Le résultat : La boucle for s'exécute très vite et termine son cycle alors que les threads n'ont peut-être même pas encore commencé à travailler. Quand les threads s'activent enfin et lisent la 
+valeur de j, la boucle est déjà finie et 
+j vaut 9 (la dernière valeur assignée). Ils affichent donc tous le carré de 9.
+
+CE QUE JAI COMPRIS PERSO :
+un délégué est l equivalent d une enveloppe qui contient une reference vers une methode
+un thread est comme un ouvrier qui peux executer une tache parllement a d autre
+le thread est assez lent au demarrage comparé a la boucle for(surement aussi plus lent que d autre fonctions)
+le t join sert a garantir que le thread fini son job avant de passer aau suivant
+Le i disposable sert a faire en sorte que les fichiers utilisé par le thread soit fermé quand il a fini pour permettre aux autres threads de les utiliser sans problèmes sinon freeze
+rien n est rellement parallele, c est juste que les threads sont mis en pause pour laisser les autres faire leur travail, mais ils ne s executent pas vraiment en même temps
+meme avec plusieurs coeur, si un thread utilisee les meme fichiers qu un autre, le windows va sleep le thread pour éviter les conflits d accès aux fichiers
+le code normal peu literalement se finir avant qu un thread ne commence, donc on utilise T join pour s assurer que le thread a fini son travail avant de continuer
+la closure fait en sorte que les threads utilisent la même variable j, et comme la boucle for est très rapide, tous les threads finissent par utiliser la même valeur de j (9) 
+au lieu d'avoir leur propre copie de j à chaque itération. C'est pourquoi ils affichent tous le carré de 9 au lieu du carré de leur propre valeur de j.
+si je creer une variable en dehors de la boucle, elle est utilisé par tout le monde, 1 case mémoire
+mais à l interieur , sa fait utiliser 9 : une copie pour chaque thread , 9 cases mémoire, et pas de problème de concurrence pour accéder à la même variable.

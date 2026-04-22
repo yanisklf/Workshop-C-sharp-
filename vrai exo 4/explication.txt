@@ -1,0 +1,9 @@
+Simple : Une variable qui pointe vers une seule méthode.
+
+Tableau : Une liste structurée de méthodes que l'on parcourt avec une boucle.
+
+Multicast : Une seule variable "combo" qui contient plusieurs méthodes et les déclenche toutes en même temps avec un seul appel.
+on voit dans 3 et 4 comment utiliser les délégués pour créer des threads qui exécutent des tâches en parallèle.
+
+le tableau peux executer les methodes dans nimporte quel ordre grace a l index
+le multicast execute tout en meme temps avec une synthaxe plus simple mais on ne controle pas l odre d execution des methode

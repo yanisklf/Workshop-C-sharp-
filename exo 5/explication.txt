@@ -1,0 +1,17 @@
+
+
+
+
+?ypes Valeurs (int, bool, double, struct) StackTaille petite et fixe.Types Références (class, string, array)
+Types Références (class, string, array) HeapTaille variable ou besoin de survie prolongée.
+Variables locales Stack: doivent disparaître après la fonction.
+Variables globales / Champs de classe Heap :Doivent rester accessibles tant que l'objet existe.
+
+LE STACK est tres petit generalement 1mo si on depasse cette limite on a une StackOverflowException
+LE HEAP est beaucoup plus grand que le stack, il peut aller jusqu a plusieurs go, mais il est plus lent que le stack pour l allocation et la libération de mémoire.
+exemple dans l exo 4 le compteur de boucle est dans le stack
+les objets de classe dans le heap
+
+cependant dans l exo 5 le resultat est inverse : le stack est plus lent que le heap
+c est logique : le stack fonction en lifo donc plus la pile est grande moins c est pratique de remplacer les valeurs une par une
+alors que le heap peut acceder directement a nimporte quelle case mémoire sans devoir parcourir toute la pile pour trouver la bonne case
